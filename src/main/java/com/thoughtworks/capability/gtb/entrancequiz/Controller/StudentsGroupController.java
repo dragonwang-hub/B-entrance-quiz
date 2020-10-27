@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -27,5 +28,11 @@ public class StudentsGroupController {
     @ResponseStatus(HttpStatus.CREATED)
     public void addStudent(@RequestBody String name) {
         studentsGroupService.addStudent(name);
+    }
+
+    @GetMapping(path = "group")
+    @ResponseStatus(HttpStatus.OK)
+    public Map<String, List<Students>> groupStudents() {
+        return studentsGroupService.groupStudents();
     }
 }

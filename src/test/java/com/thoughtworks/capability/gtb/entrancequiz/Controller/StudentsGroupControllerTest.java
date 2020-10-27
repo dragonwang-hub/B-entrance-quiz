@@ -52,4 +52,12 @@ class StudentsGroupControllerTest {
         assertEquals(16, size);
         assertEquals("宫本武藏", student.getName());
     }
+
+    @Test
+    void should_six_groups_of_students() throws Exception {
+        mockMvc.perform(get("/group"))
+                .andExpect(jsonPath("$.['1 组']", hasSize(3)))
+                .andExpect(jsonPath("$.['4 组']", hasSize(2)))
+                .andExpect(status().isOk());
+    }
 }
