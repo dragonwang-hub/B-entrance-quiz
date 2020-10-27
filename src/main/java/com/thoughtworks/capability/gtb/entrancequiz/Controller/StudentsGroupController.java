@@ -26,6 +26,6 @@ public class StudentsGroupController {
     @PostMapping(path = "add")
     @ResponseStatus(HttpStatus.CREATED)
     public void addStudent(@RequestBody String name) {
-//        studentsGroupService.addStudent(name);
+        studentsGroupService.addStudent(name);
     }
 }
