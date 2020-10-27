@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@CrossOrigin
 @RequestMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
 public class StudentsGroupController {
 
