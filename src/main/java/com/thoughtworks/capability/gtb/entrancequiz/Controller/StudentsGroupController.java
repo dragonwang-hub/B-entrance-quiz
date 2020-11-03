@@ -13,9 +13,12 @@ import java.util.Map;
 
 @RestController
 @CrossOrigin
+// TODO GTB-知识点: - @RequestMapping的produces可以省略
 @RequestMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
 public class StudentsGroupController {
 
+    // TODO GTB-知识点: - 推荐使用构造器注入
+    // TODO GTB-工程实践: - 违反了封装性，字段应该使用private
     @Autowired
     StudentsGroupService studentsGroupService;
 
@@ -25,6 +28,7 @@ public class StudentsGroupController {
         return studentsGroupService.getAll();
     }
 
+    // TODO GTB-知识点: - 违反Restful实践, url不合理
     @PostMapping(path = "add")
     @ResponseStatus(HttpStatus.CREATED)
     public void addStudent(@RequestBody String name) {
@@ -33,6 +37,8 @@ public class StudentsGroupController {
 
     @GetMapping(path = "group")
     @ResponseStatus(HttpStatus.OK)
+    // TODO GTB-知识点: - 违反Restful实践, 创建资源的请求应该使用POST
+    // TODO GTB-工程实践: - 应该创建专门的对象来表示Group
     public Map<String, List<Students>> groupStudents() {
         return studentsGroupService.groupStudents();
     }
